@@ -2,9 +2,9 @@
 
 ## Before build
 
-- android: yarn react-native-auto-change-version-build-android
-- ios: yarn react-native-auto-change-version-build-ios
-- all: yarn react-native-auto-change-version-build
+- Android: yarn react-native-auto-change-version-build-android
+- iOS: yarn react-native-auto-change-version-build-ios
+- All: yarn react-native-auto-change-version-build
 
 ## Recommend
 
@@ -14,7 +14,7 @@ For android:
   ` "scripts": { ... "build-apk": "react-native-auto-change-version-build-android && cd android && ./gradlew assembleRelease", ... }`
 
 For ios:
-Add to ${ProjectName}.xcscheme before <BuildActionEntries> tag
+Add to ${ProjectName}.xcscheme before `<BuildActionEntries>` tag
 
 -      <PreActions>
          <ExecutionAction
