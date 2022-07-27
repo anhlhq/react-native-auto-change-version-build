@@ -1,5 +1,23 @@
 {
   "name": "react-native-auto-change-version-build",
   "packageManager": "yarn@3.2.2",
-  "version": "0.0.1"
+  "version": "0.0.9",
+  "maintainers": [
+    {
+      "name": "Le Huy Quang Anh",
+      "email": "lehuyquanganh00@gmail.com"
+    }
+  ],
+  "repository": {
+    "url": "https://github.com/anhlhq/react-native-auto-change-version-build.git",
+    "type": "git"
+  },
+  "main": "index.js",
+  "license": "MIT",
+  "bin": {
+    "react-native-auto-change-version-build": "./src/run-all.js",
+    "react-native-auto-change-version-build-android": "./src/run-android.js",
+    "react-native-auto-change-version-build-ios": "./src/run-ios.js"
+  },
+  "private": false
 }

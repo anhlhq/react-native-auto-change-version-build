@@ -1,7 +1,9 @@
+#!/usr/bin/env node
+
 const fs = require("fs");
-const path = require("path");
 
 const process = async ({ path, pattern, platform }) => {
+  console.log("path", path);
   fs.readFile(path, { encoding: "utf8" }, (err, data) => {
     const date = new Date();
     const year = date.getFullYear();
@@ -48,54 +50,4 @@ const process = async ({ path, pattern, platform }) => {
   });
 };
 
-const changeVersionAndroid = async () => {
-  const filePath = path.join(__dirname, "./android/app/build.gradle");
-  process({
-    path: filePath,
-    pattern: /versionCode\s*[0-9.]+/,
-    platform: "android",
-  });
-};
-
-const changVersionIOS = async () => {
-  const filePath = path.join(__dirname, "./ios");
-  let nameProject = "";
-  fs.readdir(filePath, { encoding: "utf8" }, (err, data) => {
-    if (err) throw err;
-    const fileProject = data.find((item) => item.includes(".xcodeproj"));
-
-    if (fileProject) {
-      nameProject = fileProject.split(".")[0];
-    }
-
-    if (fileProject) {
-      const infoPlistPath = path.join(
-        __dirname,
-        `./ios/${nameProject}/Info.plist`
-      );
-
-      if (infoPlistPath) {
-        process({
-          path: infoPlistPath,
-          pattern:
-            /<key>CFBundleVersion<\/key>\n\s+<string>(\$\(CURRENT_PROJECT_VERSION\)|[0-9.]+)<\/string>/,
-          platform: "ios",
-        });
-      }
-    }
-  });
-};
-
-changeVersionAndroid();
-changVersionIOS();
-
-const changeVersion = () => {
-  changeVersionAndroid();
-  changVersionIOS();
-};
-
-export default {
-  changeVersionAndroid,
-  changVersionIOS,
-  changeVersion,
-};
+module.exports = process;
