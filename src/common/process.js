@@ -10,7 +10,9 @@ const process = async ({ path, pattern, platform }) => {
     const _month = date.getMonth() + 1;
     const month = _month < 10 ? `0${_month}` : _month;
     const day = date.getDate();
-    const yymmdd = `${year.toString().slice(2, 4)}${month}${day}`;
+    const yymmdd = `${year.toString().slice(2, 4)}${month}${
+      day < 10 ? `0${day}` : day
+    }`;
 
     let newPrefixVersion = "";
     let newSuffixVersion = "";
